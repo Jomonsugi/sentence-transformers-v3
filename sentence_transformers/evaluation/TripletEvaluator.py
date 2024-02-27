@@ -137,7 +137,7 @@ class TripletEvaluator(SentenceEvaluator):
         accuracy_euclidean = num_correct_euclidean_triplets / num_triplets
         accs = {
             SimilarityFunction.COSINE.value: accuracy_cos,
-            SimilarityFunction.DOT_SCORE.value: accuracy_dot,
+            SimilarityFunction.DOT_PRODUCT.value: accuracy_dot,
             SimilarityFunction.MANHATTAN.value: accuracy_manhattan,
             SimilarityFunction.EUCLIDEAN.value: accuracy_euclidean,
         }
@@ -162,7 +162,7 @@ class TripletEvaluator(SentenceEvaluator):
 
         if self.best_scoring_function == SimilarityFunction.COSINE.value:
             return accuracy_cos
-        if self.best_scoring_function == SimilarityFunction.DOT_SCORE.value:
+        if self.best_scoring_function == SimilarityFunction.DOT_PRODUCT.value:
             return accuracy_dot
         if self.best_scoring_function == SimilarityFunction.MANHATTAN.value:
             return accuracy_manhattan

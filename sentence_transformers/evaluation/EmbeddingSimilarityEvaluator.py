@@ -176,7 +176,7 @@ class EmbeddingSimilarityEvaluator(SentenceEvaluator):
             return eval_spearman_euclidean
         elif self.main_similarity == SimilarityFunction.MANHATTAN.value:
             return eval_spearman_manhattan
-        elif self.main_similarity == SimilarityFunction.DOT_SCORE.value:
+        elif self.main_similarity == SimilarityFunction.DOT_PRODUCT.value:
             return eval_spearman_dot
         elif self.main_similarity is None:
             eval_metrics = [eval_spearman_cosine, eval_spearman_manhattan, eval_spearman_euclidean, eval_spearman_dot]

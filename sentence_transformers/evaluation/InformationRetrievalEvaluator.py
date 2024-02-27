@@ -39,7 +39,7 @@ class InformationRetrievalEvaluator(SentenceEvaluator):
         write_csv: bool = True,
         similarity_fct: Dict[str, Callable[[Tensor, Tensor], Tensor]] = {
             SimilarityFunction.COSINE.value: cos_sim,
-            SimilarityFunction.DOT_SCORE.value: dot_score,
+            SimilarityFunction.DOT_PRODUCT.value: dot_score,
         },  # Score function, higher=more similar
         main_score_function: Union[str, SimilarityFunction] = SimilarityFunction.COSINE.value,
     ):

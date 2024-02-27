@@ -168,7 +168,7 @@ class BinaryClassificationEvaluator(SentenceEvaluator):
             [SimilarityFunction.COSINE.value, "Cosine-Similarity", cosine_scores, True],
             [SimilarityFunction.MANHATTAN.value, "Manhattan-Distance", manhattan_distances, False],
             [SimilarityFunction.EUCLIDEAN.value, "Euclidean-Distance", euclidean_distances, False],
-            [SimilarityFunction.DOT_SCORE.value, "Dot-Product", dot_scores, True],
+            [SimilarityFunction.DOT_PRODUCT.value, "Dot-Product", dot_scores, True],
         ]:
             acc, acc_threshold = self.find_best_acc_and_threshold(scores, labels, reverse)
             f1, precision, recall, f1_threshold = self.find_best_f1_and_threshold(scores, labels, reverse)

@@ -12,10 +12,10 @@ from .util import (
 
 
 class SimilarityFunction(Enum):
-    COSINE = "cos_sim"
-    EUCLIDEAN = "euclidean_sim"
-    MANHATTAN = "manhattan_sim"
-    DOT_SCORE = "dot_score"
+    COSINE = "cosine"
+    EUCLIDEAN = "euclidean"
+    MANHATTAN = "manhattan"
+    DOT_PRODUCT = "dot_product"
 
     @staticmethod
     def map_to_function(score_function):
@@ -28,7 +28,7 @@ class SimilarityFunction(Enum):
             return manhattan_sim_fn
         elif score_function == SimilarityFunction.EUCLIDEAN.value:
             return euclidean_sim_fn
-        elif score_function == SimilarityFunction.DOT_SCORE.value:
+        elif score_function == SimilarityFunction.DOT_PRODUCT.value:
             return dot_score_fn
         else:
             raise ValueError(
@@ -48,7 +48,7 @@ class SimilarityFunction(Enum):
             return pairwise_manhattan_sim_fn
         elif score_function == SimilarityFunction.EUCLIDEAN.value:
             return pairwise_euclidean_sim_fn
-        elif score_function == SimilarityFunction.DOT_SCORE.value:
+        elif score_function == SimilarityFunction.DOT_PRODUCT.value:
             return pairwise_dot_score_fn
         else:
             raise ValueError(

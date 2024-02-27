@@ -61,6 +61,9 @@ class SentenceTransformer(nn.Sequential):
         titles in "}`.
     :param default_prompt_name: The name of the prompt that should be used by default. If not set,
         no prompt will be applied.
+    :param score_function_name: The name of the similarity function to use. Valid options are "cosine", "dot_product",
+        "euclidean", and "manhattan". If not set, it is automatically set after training or automatically set to
+        "cosine" if `compare` or `compare_pairwise` are called while `score_function_name` is still None.
     :param cache_folder: Path to store models. Can also be set by the SENTENCE_TRANSFORMERS_HOME environment variable.
     :param revision: The specific model version to use. It can be a branch name, a tag name, or a commit id,
         for a stored model on Hugging Face.
@@ -77,6 +80,7 @@ class SentenceTransformer(nn.Sequential):
         device: Optional[str] = None,
         prompts: Optional[Dict[str, str]] = None,
         default_prompt_name: Optional[str] = None,
+        score_function_name: Optional[Union[str, SimilarityFunction]] = None,
         cache_folder: Optional[str] = None,
         trust_remote_code: bool = False,
         revision: Optional[str] = None,
@@ -89,6 +93,9 @@ class SentenceTransformer(nn.Sequential):
         self._model_card_vars = {}
         self._model_card_text = None
         self._model_config = {}
+        self.score_function = None
+        self.score_function_pairwise = None
+        self.score_function_name = score_function_name
         if use_auth_token is not None:
             warnings.warn(
                 "The `use_auth_token` argument is deprecated and will be removed in v3 of SentenceTransformers.",
@@ -203,8 +210,6 @@ class SentenceTransformer(nn.Sequential):
                     revision=revision,
                     trust_remote_code=trust_remote_code,
                 )
-        else:
-            self.score_function_name = None
 
         if modules is not None and not isinstance(modules, OrderedDict):
             modules = OrderedDict([(str(idx), module) for idx, module in enumerate(modules)])
@@ -213,17 +218,6 @@ class SentenceTransformer(nn.Sequential):
         if device is None:
             device = get_device_name()
             logger.info("Use pytorch device_name: {}".format(device))
-
-        if self.score_function_name is not None:
-            if self.score_function_name not in SimilarityFunction.possible_values():
-                raise ValueError(
-                    "The provided value is {}, but available values are {}.".format(
-                        self.score_function_name, SimilarityFunction.possible_values()
-                    )
-                )
-
-            self.score_function = SimilarityFunction.map_to_function(self.score_function_name)
-            self.score_function_pairwise = SimilarityFunction.map_to_pairwise_function(self.score_function_name)
 
         self.to(device)
 
@@ -540,6 +534,46 @@ class SentenceTransformer(nn.Sequential):
             except queue.Empty:
                 break
 
+    @property
+    def score_function_name(self) -> Optional[str]:
+        return self._score_function_name
+
+    @score_function_name.setter
+    def score_function_name(self, value: Optional[Union[str, SimilarityFunction]]):
+        if isinstance(value, SimilarityFunction):
+            value = value.value
+        self._score_function_name = value
+
+        if value is not None:
+            self.score_function = SimilarityFunction.map_to_function(value)
+            self.score_function_pairwise = SimilarityFunction.map_to_pairwise_function(value)
+
+    def compare(self, embeddings1: Union[Tensor, ndarray], embeddings2: Union[Tensor, ndarray]) -> Tensor:
+        """
+        Compare two sets of embeddings with the similarity function set in `score_function_name`.
+
+        :param embeddings1: A matrix with the first set of embeddings
+        :param embeddings2: A matrix with the second set of embeddings
+        :return: A matrix with the similarity scores between the two sets of embeddings
+        """
+        if self.score_function_name is None:
+            logger.warning("No `score_function_name` set. Using default: 'cosine'")
+            self.score_function_name = "cosine"
+        return self.score_function(embeddings1, embeddings2)
+
+    def compare_pairwise(self, embeddings1: Union[Tensor, ndarray], embeddings2: Union[Tensor, ndarray]) -> Tensor:
+        """
+        Compare two sets of embeddings with the similarity function set in `score_function_name`.
+
+        :param embeddings1: A matrix with the first set of embeddings
+        :param embeddings2: A matrix with the second set of embeddings
+        :return: A vector with the pairwise similarity scores between the two sets of embeddings
+        """
+        if self.score_function_name is None:
+            logger.warning("No `score_function_name` set. Using default: 'cosine'")
+            self.score_function_name = "cosine"
+        return self.score_function_pairwise(embeddings1, embeddings2)
+
     def set_pooling_include_prompt(self, include_prompt: bool) -> None:
         """
         Sets the `include_prompt` attribute in the pooling layer in the model, if there is one.
@@ -615,13 +649,11 @@ class SentenceTransformer(nn.Sequential):
                 "pytorch": torch.__version__,
             }
 
-        if "score_function" not in self._model_config:
-            self._model_config["score_function"] = self.score_function_name
-
         with open(os.path.join(path, "config_sentence_transformers.json"), "w") as fOut:
             config = self._model_config.copy()
             config["prompts"] = self.prompts
             config["default_prompt_name"] = self.default_prompt_name
+            config["score_function_name"] = self.score_function_name
             json.dump(config, fOut, indent=2)
 
         # Save modules
@@ -1010,10 +1042,6 @@ class SentenceTransformer(nn.Sequential):
 
             self._eval_during_training(evaluator, output_path, save_best_model, epoch, -1, callback)
 
-            if self.score_function_name is not None:
-                self.score_function = SimilarityFunction.map_to_function(self.score_function_name)
-                self.score_function_pairwise = SimilarityFunction.map_to_pairwise_function(self.score_function_name)
-
         if evaluator is None and output_path is not None:  # No evaluator, but output path: save final model version
             self.save(output_path)
 
@@ -1047,7 +1075,11 @@ class SentenceTransformer(nn.Sequential):
                 callback(score, epoch, steps)
             if score > self.best_score:
                 self.best_score = score
-                if hasattr(evaluator, "best_scoring_function") and evaluator.best_scoring_function is not None:
+                if (
+                    hasattr(evaluator, "best_scoring_function")
+                    and evaluator.best_scoring_function is not None
+                    and self.score_function_name is None
+                ):
                     self.score_function_name = evaluator.best_scoring_function
                 if save_best_model:
                     self.save(output_path)
@@ -1090,7 +1122,6 @@ class SentenceTransformer(nn.Sequential):
             tokenizer_args={"token": token, "trust_remote_code": trust_remote_code, "revision": revision},
         )
         pooling_model = Pooling(transformer_model.get_word_embedding_dimension(), "mean")
-        self.score_function_name = None
         return [transformer_model, pooling_model]
 
     def _load_sbert_model(
@@ -1127,15 +1158,9 @@ class SentenceTransformer(nn.Sequential):
                     )
                 )
 
-            if "score_function" in self._model_config:
-                logger.info(
-                    "The loaded model uses the {} score function.\n".format(self._model_config["score_function"])
-                )
-                self.score_function_name = self._model_config["score_function"]
-            else:
-                self.score_function_name = None
-
-            # Set prompts if not already overridden by the __init__ calls
+            # Set the score function & prompts if not already overridden by __init__
+            if self.score_function_name is None:
+                self.score_function_name = self._model_config.get("score_function", None)
             if not self.prompts:
                 self.prompts = self._model_config.get("prompts", {})
             if not self.default_prompt_name:
