@@ -114,7 +114,7 @@ class ParaphraseMiningEvaluator(SentenceEvaluator):
 
         aps, thresholds, precisions, recalls, f1s = [], [], [], [], []
         for sim_fct_str in self.sim_fcts_to_check:
-            sim_fct_mapping = SimilarityFunction.map_to_pairwise_function(sim_fct_str)
+            sim_fct_mapping = SimilarityFunction.map_to_function(sim_fct_str)
 
             # Compute embedding for the sentences
             pairs_list = paraphrase_mining(

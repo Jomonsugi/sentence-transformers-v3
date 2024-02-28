@@ -26,7 +26,7 @@ def _convert_to_tensor(a: Union[list, np.ndarray, Tensor]):
 
 
 def _convert_to_batch(a: Tensor):
-    if len(a.shape) == 1:
+    if a.dim() == 1:
         a = a.unsqueeze(0)
     return a
 
@@ -35,30 +35,6 @@ def _convert_to_batch_tensor(a: Union[list, np.ndarray, Tensor]):
     a = _convert_to_tensor(a)
     a = _convert_to_batch(a)
     return a
-
-
-def manhattan_sim_fn(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]):
-    """
-    Computes the negative manhattan distance.
-
-    :return: Vector with res[i] = -manhattan_distance(a[i], b[i])
-    """
-    a = _convert_to_batch_tensor(a)
-    b = _convert_to_batch_tensor(b)
-
-    return -torch.sum(torch.abs(a - b), dim=-1, keepdim=True)
-
-
-def euclidean_sim_fn(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]):
-    """
-    Computes the negative euclidean distance.
-
-    :return: Vector with res[i]  = -euclidean(a[i], b[i])
-    """
-    a = _convert_to_batch_tensor(a)
-    b = _convert_to_batch_tensor(b)
-
-    return -torch.sqrt(torch.sum((a - b) ** 2, dim=-1, keepdim=True))
 
 
 def pytorch_cos_sim(a: Tensor, b: Tensor) -> Tensor:
@@ -70,113 +46,18 @@ def pytorch_cos_sim(a: Tensor, b: Tensor) -> Tensor:
     return cos_sim(a, b)
 
 
-def cos_sim(a: Tensor, b: Tensor) -> Tensor:
+def cos_sim(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
     """
     Computes the cosine similarity cos_sim(a[i], b[j]) for all i and j.
 
     :return: Matrix with res[i][j]  = cos_sim(a[i], b[j])
     """
-    if not isinstance(a, torch.Tensor):
-        a = torch.tensor(a)
+    a = _convert_to_batch_tensor(a)
+    b = _convert_to_batch_tensor(b)
 
-    if not isinstance(b, torch.Tensor):
-        b = torch.tensor(b)
-
-    if len(a.shape) == 1:
-        a = a.unsqueeze(0)
-
-    if len(b.shape) == 1:
-        b = b.unsqueeze(0)
-
-    a_norm = torch.nn.functional.normalize(a, p=2, dim=1)
-    b_norm = torch.nn.functional.normalize(b, p=2, dim=1)
+    a_norm = normalize_embeddings(a)
+    b_norm = normalize_embeddings(b)
     return torch.mm(a_norm, b_norm.transpose(0, 1))
-
-
-def dot_score(a: Tensor, b: Tensor) -> Tensor:
-    """
-    Computes the dot-product dot_prod(a[i], b[j]) for all i and j.
-
-    :return: Matrix with res[i][j]  = dot_prod(a[i], b[j])
-    """
-    if not isinstance(a, torch.Tensor):
-        a = torch.tensor(a)
-
-    if not isinstance(b, torch.Tensor):
-        b = torch.tensor(b)
-
-    if len(a.shape) == 1:
-        a = a.unsqueeze(0)
-
-    if len(b.shape) == 1:
-        b = b.unsqueeze(0)
-
-    return torch.mm(a, b.transpose(0, 1))
-
-
-def cos_sim_fn(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
-    """
-    Computes the cosine similarity.
-
-    :return: Vector with res[i]  = cos_sim(a[i], b[i])
-    """
-    a = _convert_to_batch_tensor(a)
-    b = _convert_to_batch_tensor(b)
-
-    a_norm = torch.nn.functional.normalize(a, p=2, dim=1)
-    b_norm = torch.nn.functional.normalize(b, p=2, dim=1)
-    return torch.sum(a_norm * b_norm, dim=1, keepdim=True)
-
-
-def dot_score_fn(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
-    """
-    Computes the dot-product.
-
-    :return: Vector with res[i]  = dot_prod(a[i], b[i])
-    """
-    a = _convert_to_batch_tensor(a)
-    b = _convert_to_batch_tensor(b)
-
-    return torch.sum(a * b, dim=-1, keepdim=True)
-
-
-def pairwise_manhattan_sim_fn(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
-    """
-    Computes the pairwise manhattan similarity manhattan_sim(a[i], b[j]) for all i and j.
-
-    :return: Matrix with res[i][j] = manhattan_sim(a[i], b[j])
-    """
-    a = _convert_to_tensor(a)
-    b = _convert_to_tensor(b)
-
-    return -torch.cdist(a, b, p=1.0)
-
-
-def pairwise_euclidean_sim_fn(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
-    """
-    Computes the pairwise euclidean similarity euclidean_sim(a[i], b[j]) for all i and j.
-
-    :return: Matrix with res[i][j] = euclidean_sim(a[i], b[j])
-    """
-    a = _convert_to_tensor(a)
-    b = _convert_to_tensor(b)
-
-    return -torch.cdist(a, b, p=2.0)
-
-
-def pairwise_dot_score(a: Tensor, b: Tensor) -> Tensor:
-    """
-    Computes the pairwise dot-product dot_prod(a[i], b[i])
-
-    :return: Vector with res[i] = dot_prod(a[i], b[i])
-    """
-    if not isinstance(a, torch.Tensor):
-        a = torch.tensor(a)
-
-    if not isinstance(b, torch.Tensor):
-        b = torch.tensor(b)
-
-    return (a * b).sum(dim=-1)
 
 
 def pairwise_cos_sim(a: Tensor, b: Tensor) -> Tensor:
@@ -185,37 +66,82 @@ def pairwise_cos_sim(a: Tensor, b: Tensor) -> Tensor:
 
     :return: Vector with res[i] = cos_sim(a[i], b[i])
     """
-    if not isinstance(a, torch.Tensor):
-        a = torch.tensor(a)
-
-    if not isinstance(b, torch.Tensor):
-        b = torch.tensor(b)
+    a = _convert_to_tensor(a)
+    b = _convert_to_tensor(b)
 
     return pairwise_dot_score(normalize_embeddings(a), normalize_embeddings(b))
 
 
-def pairwise_dot_score_fn(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
+def dot_score(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
     """
-    Computes the pairwise dot-product dot_prod(a[i], b[j]) for all i and j.
+    Computes the dot-product dot_prod(a[i], b[j]) for all i and j.
 
-    :return: Matrix with res[i][j] = dot_prod(a[i], b[j])
+    :return: Matrix with res[i][j]  = dot_prod(a[i], b[j])
     """
-    a = _convert_to_tensor(a)
-    b = _convert_to_tensor(b)
+    a = _convert_to_batch_tensor(a)
+    b = _convert_to_batch_tensor(b)
 
     return torch.mm(a, b.transpose(0, 1))
 
 
-def pairwise_cos_sim_fn(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
+def pairwise_dot_score(a: Tensor, b: Tensor) -> Tensor:
     """
-    Computes the pairwise cossim cos_sim(a[i], b[j]) for all i and j.
+    Computes the pairwise dot-product dot_prod(a[i], b[i])
 
-    :return: Matrix with res[i][j] = cos_sim(a[i], b[j])
+    :return: Vector with res[i] = dot_prod(a[i], b[i])
     """
     a = _convert_to_tensor(a)
     b = _convert_to_tensor(b)
 
-    return torch.mm(normalize_embeddings(a), normalize_embeddings(b).transpose(0, 1))
+    return (a * b).sum(dim=-1)
+
+
+def manhattan_sim(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
+    """
+    Computes the manhattan similarity manhattan_sim(a[i], b[j]) for all i and j.
+
+    :return: Matrix with res[i][j] = manhattan_sim(a[i], b[j])
+    """
+    a = _convert_to_batch_tensor(a)
+    b = _convert_to_batch_tensor(b)
+
+    return -torch.cdist(a, b, p=1.0)
+
+
+def pairwise_manhattan_sim(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]):
+    """
+    Computes the negative manhattan distance.
+
+    :return: Vector with res[i] = -manhattan_distance(a[i], b[i])
+    """
+    a = _convert_to_tensor(a)
+    b = _convert_to_tensor(b)
+
+    return -torch.sum(torch.abs(a - b), dim=-1)
+
+
+def euclidean_sim(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]) -> Tensor:
+    """
+    Computes the euclidean similarity euclidean_sim(a[i], b[j]) for all i and j.
+
+    :return: Matrix with res[i][j] = euclidean_sim(a[i], b[j])
+    """
+    a = _convert_to_batch_tensor(a)
+    b = _convert_to_batch_tensor(b)
+
+    return -torch.cdist(a, b, p=2.0)
+
+
+def pairwise_euclidean_sim(a: Union[list, np.ndarray, Tensor], b: Union[list, np.ndarray, Tensor]):
+    """
+    Computes the negative euclidean distance.
+
+    :return: Vector with res[i]  = -euclidean(a[i], b[i])
+    """
+    a = _convert_to_tensor(a)
+    b = _convert_to_tensor(b)
+
+    return -torch.sqrt(torch.sum((a - b) ** 2, dim=-1))
 
 
 def pairwise_angle_sim(x: Tensor, y: Tensor) -> Tensor:
@@ -227,11 +153,8 @@ def pairwise_angle_sim(x: Tensor, y: Tensor) -> Tensor:
     :return: Vector with res[i] = angle_sim(a[i], b[i])
     """
 
-    if not isinstance(x, torch.Tensor):
-        x = torch.tensor(x)
-
-    if not isinstance(y, torch.Tensor):
-        y = torch.tensor(y)
+    x = _convert_to_tensor(x)
+    y = _convert_to_tensor(y)
 
     # modified from https://github.com/SeanLee97/AnglE/blob/main/angle_emb/angle.py
     # chunk both tensors to obtain complex components

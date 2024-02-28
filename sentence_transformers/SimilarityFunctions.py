@@ -1,13 +1,13 @@
 from enum import Enum
 from .util import (
-    cos_sim_fn,
-    manhattan_sim_fn,
-    euclidean_sim_fn,
-    dot_score_fn,
-    pairwise_cos_sim_fn,
-    pairwise_dot_score_fn,
-    pairwise_manhattan_sim_fn,
-    pairwise_euclidean_sim_fn,
+    cos_sim,
+    manhattan_sim,
+    euclidean_sim,
+    dot_score,
+    pairwise_cos_sim,
+    pairwise_manhattan_sim,
+    pairwise_euclidean_sim,
+    pairwise_dot_score,
 )
 
 
@@ -23,13 +23,13 @@ class SimilarityFunction(Enum):
             score_function = score_function.value
 
         if score_function == SimilarityFunction.COSINE.value:
-            return cos_sim_fn
+            return cos_sim
         elif score_function == SimilarityFunction.MANHATTAN.value:
-            return manhattan_sim_fn
+            return manhattan_sim
         elif score_function == SimilarityFunction.EUCLIDEAN.value:
-            return euclidean_sim_fn
+            return euclidean_sim
         elif score_function == SimilarityFunction.DOT_PRODUCT.value:
-            return dot_score_fn
+            return dot_score
         else:
             raise ValueError(
                 "The provided function {} is not supported. Use one of the supported values: {}.".format(
@@ -43,13 +43,13 @@ class SimilarityFunction(Enum):
             score_function = score_function.value
 
         if score_function == SimilarityFunction.COSINE.value:
-            return pairwise_cos_sim_fn
+            return pairwise_cos_sim
         elif score_function == SimilarityFunction.MANHATTAN.value:
-            return pairwise_manhattan_sim_fn
+            return pairwise_manhattan_sim
         elif score_function == SimilarityFunction.EUCLIDEAN.value:
-            return pairwise_euclidean_sim_fn
+            return pairwise_euclidean_sim
         elif score_function == SimilarityFunction.DOT_PRODUCT.value:
-            return pairwise_dot_score_fn
+            return pairwise_dot_score
         else:
             raise ValueError(
                 "The provided function {} is not supported. Use one of the supported values: {}.".format(
