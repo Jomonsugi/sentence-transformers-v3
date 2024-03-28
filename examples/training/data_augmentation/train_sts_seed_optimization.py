@@ -28,9 +28,9 @@ import math
 import torch
 import random
 import numpy as np
-from sentence_transformers import SentenceTransformer, LoggingHandler, losses, models, util
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers.readers import InputExample
+from sentence_transformers_v3 import SentenceTransformer, LoggingHandler, losses, models, util
+from sentence_transformers_v3.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers_v3.readers import InputExample
 import logging
 import sys
 import os

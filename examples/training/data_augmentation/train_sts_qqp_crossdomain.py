@@ -18,11 +18,11 @@ python train_sts_qqp_crossdomain.py pretrained_transformer_model_name
 """
 
 from torch.utils.data import DataLoader
-from sentence_transformers import models, losses, util, LoggingHandler, SentenceTransformer
-from sentence_transformers.cross_encoder import CrossEncoder
-from sentence_transformers.cross_encoder.evaluation import CECorrelationEvaluator
-from sentence_transformers.evaluation import BinaryClassificationEvaluator
-from sentence_transformers.readers import InputExample
+from sentence_transformers_v3 import models, losses, util, LoggingHandler, SentenceTransformer
+from sentence_transformers_v3.cross_encoder import CrossEncoder
+from sentence_transformers_v3.cross_encoder.evaluation import CECorrelationEvaluator
+from sentence_transformers_v3.evaluation import BinaryClassificationEvaluator
+from sentence_transformers_v3.readers import InputExample
 from datetime import datetime
 from zipfile import ZipFile
 import logging

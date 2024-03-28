@@ -19,7 +19,7 @@ python train_bi-encoder-v3.py
 
 import json
 from torch.utils.data import DataLoader
-from sentence_transformers import SentenceTransformer, LoggingHandler, util, models, losses, InputExample
+from sentence_transformers_v3 import SentenceTransformer, LoggingHandler, util, models, losses, InputExample
 import logging
 from datetime import datetime
 import gzip

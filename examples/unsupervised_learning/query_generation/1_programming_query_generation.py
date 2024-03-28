@@ -17,7 +17,7 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import torch
 import tqdm
 import os
-from sentence_transformers import util
+from sentence_transformers_v3 import util
 
 paragraphs = set()
 

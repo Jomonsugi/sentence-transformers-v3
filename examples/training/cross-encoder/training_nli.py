@@ -10,11 +10,11 @@ python training_nli.py
 
 from torch.utils.data import DataLoader
 import math
-from sentence_transformers import LoggingHandler, util
-from sentence_transformers.cross_encoder import CrossEncoder
-from sentence_transformers.cross_encoder.evaluation import CEF1Evaluator, CESoftmaxAccuracyEvaluator
-from sentence_transformers.evaluation import SequentialEvaluator
-from sentence_transformers.readers import InputExample
+from sentence_transformers_v3 import LoggingHandler, util
+from sentence_transformers_v3.cross_encoder import CrossEncoder
+from sentence_transformers_v3.cross_encoder.evaluation import CEF1Evaluator, CESoftmaxAccuracyEvaluator
+from sentence_transformers_v3.evaluation import SequentialEvaluator
+from sentence_transformers_v3.readers import InputExample
 import logging
 from datetime import datetime
 import os

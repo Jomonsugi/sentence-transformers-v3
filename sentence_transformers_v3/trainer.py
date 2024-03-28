@@ -13,18 +13,18 @@ from transformers.training_args import ParallelMode
 from datasets import DatasetDict
 from transformers.trainer_utils import EvalLoopOutput
 from transformers.data.data_collator import DataCollator
-from sentence_transformers.losses import CoSENTLoss
+from sentence_transformers_v3.losses import CoSENTLoss
 
-from sentence_transformers.training_args import TrainingArguments
-from sentence_transformers.data_collator import SentenceTransformerDataCollator
-from sentence_transformers.evaluation import SentenceEvaluator
-from sentence_transformers.sampler import ProportionalBatchSampler, RoundRobinBatchSampler
-from sentence_transformers.util import disable_logging
+from sentence_transformers_v3.training_args import TrainingArguments
+from sentence_transformers_v3.data_collator import SentenceTransformerDataCollator
+from sentence_transformers_v3.evaluation import SentenceEvaluator
+from sentence_transformers_v3.sampler import ProportionalBatchSampler, RoundRobinBatchSampler
+from sentence_transformers_v3.util import disable_logging
 
 logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
-    from sentence_transformers.SentenceTransformer import SentenceTransformer
+    from sentence_transformers_v3.SentenceTransformer import SentenceTransformer
 
 
 class SentenceTransformerTrainer(Trainer):

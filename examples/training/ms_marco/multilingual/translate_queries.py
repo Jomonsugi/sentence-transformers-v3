@@ -9,7 +9,7 @@ python translate_queries [target_language]
 """
 
 import os
-from sentence_transformers import LoggingHandler, util
+from sentence_transformers_v3 import LoggingHandler, util
 import logging
 import tarfile
 from easynmt import EasyNMT

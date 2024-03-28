@@ -11,7 +11,7 @@ Colab example: https://colab.research.google.com/drive/12hfBveGHRsxhPIUMmJYrll2l
 
 import json
 import os
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 # First, we load the papers dataset (with title and abstract information)
 dataset_file = "emnlp2016-2018.json"

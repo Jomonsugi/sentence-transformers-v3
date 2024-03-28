@@ -14,7 +14,7 @@ https://arxiv.org/abs/2004.09813
 """
 
 import os
-import sentence_transformers.util
+import sentence_transformers_v3.util
 import gzip
 import csv
 from tqdm.autonotebook import tqdm
@@ -33,7 +33,7 @@ parallel_sentences_folder = "parallel-sentences/"
 os.makedirs(os.path.dirname(parallel_sentences_path), exist_ok=True)
 if not os.path.exists(parallel_sentences_path):
     print("parallel-sentences.tsv.gz does not exists. Try to download from server")
-    sentence_transformers.util.http_get(download_url, parallel_sentences_path)
+    sentence_transformers_v3.util.http_get(download_url, parallel_sentences_path)
 
 
 os.makedirs(parallel_sentences_folder, exist_ok=True)

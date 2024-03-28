@@ -32,9 +32,9 @@ python train_sts_indomain_nlpaug.py
 from torch.utils.data import DataLoader
 import torch
 import math
-from sentence_transformers import SentenceTransformer, LoggingHandler, losses, models, util
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers.readers import InputExample
+from sentence_transformers_v3 import SentenceTransformer, LoggingHandler, losses, models, util
+from sentence_transformers_v3.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers_v3.readers import InputExample
 import nlpaug.augmenter.word as naw
 import logging
 from datetime import datetime

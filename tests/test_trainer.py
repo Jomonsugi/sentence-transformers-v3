@@ -1,6 +1,6 @@
 import re
 import pytest
-from sentence_transformers import SentenceTransformerTrainer, SentenceTransformer, losses
+from sentence_transformers_v3 import SentenceTransformerTrainer, SentenceTransformer, losses
 from datasets import DatasetDict
 
 

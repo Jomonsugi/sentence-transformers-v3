@@ -3,8 +3,8 @@ import platform
 import tempfile
 import pytest
 
-from sentence_transformers import SentenceTransformer, CrossEncoder
-from sentence_transformers.models import Transformer, Pooling
+from sentence_transformers_v3 import SentenceTransformer, CrossEncoder
+from sentence_transformers_v3.models import Transformer, Pooling
 from datasets import load_dataset, DatasetDict
 
 

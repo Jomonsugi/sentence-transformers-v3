@@ -32,9 +32,9 @@ python make_multilingual_sys.py parallel-sentences/*-train.tsv.gz --dev parallel
 
 """
 
-from sentence_transformers import SentenceTransformer, LoggingHandler, models, evaluation, losses
+from sentence_transformers_v3 import SentenceTransformer, LoggingHandler, models, evaluation, losses
 from torch.utils.data import DataLoader
-from sentence_transformers.datasets import ParallelSentencesDataset
+from sentence_transformers_v3.datasets import ParallelSentencesDataset
 from datetime import datetime
 
 import os

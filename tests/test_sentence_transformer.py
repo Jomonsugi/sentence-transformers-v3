@@ -13,8 +13,8 @@ import pytest
 
 from huggingface_hub import HfApi, RepoUrl, GitRefs, GitRefInfo
 import torch
-from sentence_transformers import SentenceTransformer
-from sentence_transformers.models import Normalize, Transformer, Pooling
+from sentence_transformers_v3 import SentenceTransformer
+from sentence_transformers_v3.models import Normalize, Transformer, Pooling
 
 
 def test_load_with_safetensors() -> None:

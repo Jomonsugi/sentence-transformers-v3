@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 from typing import Optional
 
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 
 @pytest.mark.parametrize("normalize_embeddings", (False, True))

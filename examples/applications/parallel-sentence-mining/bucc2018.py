@@ -10,7 +10,7 @@ This script requires that you have FAISS installed:
 https://github.com/facebookresearch/faiss
 """
 
-from sentence_transformers import SentenceTransformer, models
+from sentence_transformers_v3 import SentenceTransformer, models
 from collections import defaultdict
 import os
 import pickle

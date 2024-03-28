@@ -10,8 +10,8 @@ from typing import Optional
 
 import pytest
 
-from sentence_transformers import InputExample, SentenceTransformer, util
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers_v3 import InputExample, SentenceTransformer, util
+from sentence_transformers_v3.evaluation import EmbeddingSimilarityEvaluator
 
 
 def pretrained_model_score(

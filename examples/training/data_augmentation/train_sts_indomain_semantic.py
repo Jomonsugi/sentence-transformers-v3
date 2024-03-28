@@ -20,12 +20,12 @@ python train_sts_indomain_semantic.py bert-base-uncased 3
 """
 
 from torch.utils.data import DataLoader
-from sentence_transformers import models, losses, util
-from sentence_transformers import LoggingHandler, SentenceTransformer
-from sentence_transformers.cross_encoder import CrossEncoder
-from sentence_transformers.cross_encoder.evaluation import CECorrelationEvaluator
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers.readers import InputExample
+from sentence_transformers_v3 import models, losses, util
+from sentence_transformers_v3 import LoggingHandler, SentenceTransformer
+from sentence_transformers_v3.cross_encoder import CrossEncoder
+from sentence_transformers_v3.cross_encoder.evaluation import CECorrelationEvaluator
+from sentence_transformers_v3.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers_v3.readers import InputExample
 from datetime import datetime
 import logging
 import csv

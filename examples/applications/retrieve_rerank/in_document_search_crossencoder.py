@@ -17,7 +17,7 @@ Usage: python in_document_search_crossencoder.py
 Note: Requires NLTK: `pip install nltk`
 """
 
-from sentence_transformers import CrossEncoder
+from sentence_transformers_v3 import CrossEncoder
 from nltk import sent_tokenize
 import time
 

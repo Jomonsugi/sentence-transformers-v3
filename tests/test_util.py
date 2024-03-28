@@ -2,7 +2,7 @@ import numpy as np
 import sklearn
 import torch
 
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 
 def test_normalize_embeddings() -> None:

@@ -9,8 +9,8 @@ import os
 import time
 
 import numpy as np
-from sentence_transformers import SentenceTransformer
-from sentence_transformers.quantization import quantize_embeddings
+from sentence_transformers_v3 import SentenceTransformer
+from sentence_transformers_v3.quantization import quantize_embeddings
 from datasets import load_dataset
 
 import faiss

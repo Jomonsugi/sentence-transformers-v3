@@ -7,7 +7,7 @@ OR
 python evaluation_inference_speed.py model_name
 """
 
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 import sys
 import os
 import time

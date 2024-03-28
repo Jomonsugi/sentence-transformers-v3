@@ -1,6 +1,6 @@
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers import SentenceTransformer, LoggingHandler, models, util, InputExample
-from sentence_transformers import losses
+from sentence_transformers_v3.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers_v3 import SentenceTransformer, LoggingHandler, models, util, InputExample
+from sentence_transformers_v3 import losses
 import os
 import gzip
 import csv

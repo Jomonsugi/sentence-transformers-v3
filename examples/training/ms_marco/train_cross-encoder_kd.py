@@ -18,10 +18,10 @@ python train_cross-encoder-v2.py
 """
 
 from torch.utils.data import DataLoader
-from sentence_transformers import LoggingHandler, util
-from sentence_transformers.cross_encoder import CrossEncoder
-from sentence_transformers.cross_encoder.evaluation import CERerankingEvaluator
-from sentence_transformers import InputExample
+from sentence_transformers_v3 import LoggingHandler, util
+from sentence_transformers_v3.cross_encoder import CrossEncoder
+from sentence_transformers_v3.cross_encoder.evaluation import CERerankingEvaluator
+from sentence_transformers_v3 import InputExample
 import logging
 from datetime import datetime
 import gzip

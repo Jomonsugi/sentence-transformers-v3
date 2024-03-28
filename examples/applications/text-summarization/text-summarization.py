@@ -19,7 +19,7 @@ Note: Requires NLTK: `pip install nltk`
 """
 
 import nltk
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 import numpy as np
 from LexRank import degree_centrality_scores
 

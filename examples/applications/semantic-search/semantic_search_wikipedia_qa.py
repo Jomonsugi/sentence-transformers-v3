@@ -14,7 +14,7 @@ Google Colab Example: https://colab.research.google.com/drive/11GunvCqJuebfeTlgb
 """
 
 import json
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 import time
 import gzip
 import os

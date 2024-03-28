@@ -11,7 +11,7 @@ In:
 3_programming_semantic_search.py - Shows how the trained model can be used for semantic search
 """
 
-from sentence_transformers import SentenceTransformer, InputExample, losses, models, datasets
+from sentence_transformers_v3 import SentenceTransformer, InputExample, losses, models, datasets
 import os
 
 

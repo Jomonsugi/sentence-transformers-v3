@@ -11,14 +11,14 @@ import pytest
 import torch
 from torch.utils.data import DataLoader
 
-from sentence_transformers import (
+from sentence_transformers_v3 import (
     SentencesDataset,
     SentenceTransformer,
     losses,
     util,
 )
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers.readers import InputExample
+from sentence_transformers_v3.evaluation import EmbeddingSimilarityEvaluator
+from sentence_transformers_v3.readers import InputExample
 
 
 @pytest.fixture()

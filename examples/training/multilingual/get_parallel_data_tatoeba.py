@@ -6,7 +6,7 @@ This script downloads the Tatoeba corpus and extracts the sentences & translatio
 """
 
 import os
-import sentence_transformers
+import sentence_transformers_v3
 import tarfile
 import gzip
 
@@ -40,7 +40,7 @@ for filepath in [sentences_file_bz2, links_file_bz2]:
     if not os.path.exists(filepath):
         url = download_url + os.path.basename(filepath)
         print("Download", url)
-        sentence_transformers.util.http_get(url, filepath)
+        sentence_transformers_v3.util.http_get(url, filepath)
 
 # Extract files if needed
 if not os.path.exists(sentences_file):

@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader
 from tqdm.autonotebook import trange
 from datasets import Dataset, DatasetDict
 from transformers import TrainerCallback, TrainerState, TrainerControl
-from sentence_transformers.training_args import TrainingArguments
+from sentence_transformers_v3.training_args import TrainingArguments
 
 from .evaluation import SentenceEvaluator
 from .util import (
@@ -24,8 +24,8 @@ from .model_card_templates import ModelCardTemplate
 logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
-    from sentence_transformers.SentenceTransformer import SentenceTransformer
-    from sentence_transformers.readers.InputExample import InputExample
+    from sentence_transformers_v3.SentenceTransformer import SentenceTransformer
+    from sentence_transformers_v3.readers.InputExample import InputExample
 
 
 class SaveModelCallback(TrainerCallback):
@@ -194,7 +194,7 @@ class FitMixin:
         :param checkpoint_save_total_limit: Total number of checkpoints to store
         """
         # Delayed import to counter the SentenceTransformers -> FitMixin -> SentenceTransformerTrainer -> SentenceTransformers circular import
-        from sentence_transformers.trainer import SentenceTransformerTrainer
+        from sentence_transformers_v3.trainer import SentenceTransformerTrainer
 
         data_loaders, loss_fns = zip(*train_objectives)
 

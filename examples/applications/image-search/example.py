@@ -1,4 +1,4 @@
-from sentence_transformers import SentenceTransformer, util, models
+from sentence_transformers_v3 import SentenceTransformer, util, models
 from PIL import Image
 
 

@@ -12,9 +12,9 @@ import pytest
 import torch
 from torch.utils.data import DataLoader
 
-from sentence_transformers import CrossEncoder, util
-from sentence_transformers.cross_encoder.evaluation import CECorrelationEvaluator
-from sentence_transformers.readers import InputExample
+from sentence_transformers_v3 import CrossEncoder, util
+from sentence_transformers_v3.cross_encoder.evaluation import CECorrelationEvaluator
+from sentence_transformers_v3.readers import InputExample
 from typing import Generator, List, Tuple
 
 

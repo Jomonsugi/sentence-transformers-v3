@@ -16,7 +16,7 @@ without further changes needed.
 """
 
 from sklearn.decomposition import PCA
-from sentence_transformers import SentenceTransformer, LoggingHandler, util, evaluation, models, InputExample
+from sentence_transformers_v3 import SentenceTransformer, LoggingHandler, util, evaluation, models, InputExample
 import logging
 import os
 import gzip
