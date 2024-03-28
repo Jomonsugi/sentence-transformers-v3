@@ -4,7 +4,7 @@
 
 The basic function to compute sentence embeddings looks like this:
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -29,7 +29,7 @@ for sentence, embedding in zip(sentences, embeddings):
 
 First, we load a sentence-transformer model:
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("model_name_or_path")
 ```
@@ -110,7 +110,7 @@ Transformer models like BERT / RoBERTa / DistilBERT etc. the runtime and the mem
 By default, the provided methods use a limit of 128 word pieces, longer inputs will be truncated. You can get and set the maximal sequence length like this:
  
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -129,7 +129,7 @@ The easiest method is to use *pickle* to store pre-computed embeddings on disc a
 
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 import pickle
 
 model = SentenceTransformer("all-MiniLM-L6-v2")

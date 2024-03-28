@@ -48,7 +48,7 @@ Scoring thousands or millions of (query, document)-pairs would be rather slow. H
 The bi-encoder produces embeddings independently for your paragraphs and for your search queries. You can use it like this:
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("model_name")
 

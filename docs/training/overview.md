@@ -26,7 +26,7 @@ In the quick start & usage examples, we used pre-trained SentenceTransformer mod
 But we can create the networks architectures from scratch by defining the individual layers. For example, the following code would create the depicted network architecture:
 
 ```python
-from sentence_transformers import SentenceTransformer, models
+from sentence_transformers_v3 import SentenceTransformer, models
 
 word_embedding_model = models.Transformer("bert-base-uncased", max_seq_length=256)
 pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension())
@@ -38,7 +38,7 @@ First we define our individual layers, in this case, we define 'bert-base-uncase
 
 We can also construct more complex models:
 ```python
-from sentence_transformers import SentenceTransformer, models
+from sentence_transformers_v3 import SentenceTransformer, models
 from torch import nn
 
 word_embedding_model = models.Transformer("bert-base-uncased", max_seq_length=256)
@@ -57,7 +57,7 @@ Here, we add on top of the pooling layer a fully connected dense layer with Tanh
 Additionally, we can also create SentenceTransformer models from scratch for image search by loading any CLIP model from the Hugging Face Hub or a local path:
 
 ```py
-from sentence_transformers import SentenceTransformer, models
+from sentence_transformers_v3 import SentenceTransformer, models
 
 image_embedding_model = models.CLIPModel("openai/clip-vit-base-patch32")
 model = SentenceTransformer(modules=[image_embedding_model])
@@ -76,7 +76,7 @@ For more information on available datasets for training SentenceTransformers mod
 To represent our training data, we use the `InputExample` class to store training examples. As parameters, it accepts texts, which is a list of strings representing our pairs (or triplets). Further, we can also pass a label (either float or int). The following shows a simple example, where we pass text pairs to `InputExample` together with a label indicating the semantic similarity.
  
  ```python
- from sentence_transformers import SentenceTransformer, InputExample
+ from sentence_transformers_v3 import SentenceTransformer, InputExample
  from torch.utils.data import DataLoader
 
  model = SentenceTransformer("distilbert-base-nli-mean-tokens")
@@ -110,7 +110,7 @@ For each sentence pair, we pass sentence A and sentence B through our network wh
 
 A minimal example with `CosineSimilarityLoss` is the following:
 ```python
-from sentence_transformers import SentenceTransformer, InputExample, losses
+from sentence_transformers_v3 import SentenceTransformer, InputExample, losses
 from torch.utils.data import DataLoader
 
 # Define the model. Either from scratch of by loading a pre-trained model
@@ -146,7 +146,7 @@ During training, we usually want to measure the performance to see if the perfor
 
 The usage is simple:
 ```python
-from sentence_transformers import evaluation
+from sentence_transformers_v3 import evaluation
 
 sentences1 = [
     "This list contains the first column",
@@ -232,7 +232,7 @@ This code allows multi-task learning with training data from different datasets 
 
 Depending on the task, you might want to add special tokens to the tokenizer and the Transformer model. You can use the following code-snippet to achieve this:
 ```python
-from sentence_transformers import SentenceTransformer, models
+from sentence_transformers_v3 import SentenceTransformer, models
 
 word_embedding_model = models.Transformer("bert-base-uncased")
 
@@ -246,7 +246,7 @@ model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
 
 If you want to extend the vocabulary for an existent SentenceTransformer model, you can use the following code:
 ```python
-from sentence_transformers import SentenceTransformer, models
+from sentence_transformers_v3 import SentenceTransformer, models
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 word_embedding_model = model._first_module()

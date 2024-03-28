@@ -46,7 +46,7 @@ class CoSENTLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses
+                from sentence_transformers_v3 import SentenceTransformer, losses
                 from sentence_transformers.readers import InputExample
 
                 model = SentenceTransformer('bert-base-uncased')

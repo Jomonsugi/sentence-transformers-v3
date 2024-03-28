@@ -10,7 +10,7 @@ Currently the following models trained on Quora Duplicate Questions are availabl
 
 You can load & use pre-trained models like this:
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("model_name")
 ```

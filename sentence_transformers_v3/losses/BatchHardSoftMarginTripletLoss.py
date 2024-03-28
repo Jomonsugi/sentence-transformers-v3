@@ -2,7 +2,7 @@ import torch
 from torch import Tensor
 from typing import Iterable, Dict
 from .BatchHardTripletLoss import BatchHardTripletLoss, BatchHardTripletLossDistanceFunction
-from sentence_transformers.SentenceTransformer import SentenceTransformer
+from sentence_transformers_v3.SentenceTransformer import SentenceTransformer
 
 
 class BatchHardSoftMarginTripletLoss(BatchHardTripletLoss):
@@ -49,7 +49,7 @@ class BatchHardSoftMarginTripletLoss(BatchHardTripletLoss):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses
+                from sentence_transformers_v3 import SentenceTransformer, losses
                 from sentence_transformers.readers import InputExample
                 from torch.utils.data import DataLoader
 

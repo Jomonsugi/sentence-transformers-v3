@@ -16,7 +16,7 @@ We provide the following pre-trained models:
 
 You can use them in the following way:
 ```
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 embedder = SentenceTransformer('pretrained-model-name')
 ```
 

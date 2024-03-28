@@ -1,7 +1,7 @@
 # Quickstart
 Once you have [installed](installation.md) Sentence Transformers, the usage is simple:
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -32,7 +32,7 @@ BERT (and other transformer networks) output for each token in our input text an
 The sentences (texts) are mapped such that sentences with similar meanings are close in vector space. One common method to measure the similarity in vector space is to use [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity). For two sentences, this can be done like this:
 
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -46,7 +46,7 @@ print("Cosine-Similarity:", cos_sim)
 
 If you have a list with more sentences, you can use the following code example:
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 

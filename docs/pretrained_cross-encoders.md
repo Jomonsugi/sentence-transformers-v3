@@ -9,7 +9,7 @@ This page lists available **pretrained Cross-Encoders**. Cross-Encoders require 
 
 These models can be used like this:
 ```python
-from sentence_transformers import CrossEncoder
+from sentence_transformers_v3 import CrossEncoder
 
 model = CrossEncoder("model_name", max_length=512)
 scores = model.predict([("Query1", "Paragraph1"), ("Query1", "Paragraph2")])
@@ -44,7 +44,7 @@ QNLI is based on the [SQuAD dataset](https://rajpurkar.github.io/SQuAD-explorer/
 ## STSbenchmark
 The following models can be used like this:
 ```python
-from sentence_transformers import CrossEncoder
+from sentence_transformers_v3 import CrossEncoder
 
 model = CrossEncoder("model_name")
 scores = model.predict([("Sent A1", "Sent B1"), ("Sent A2", "Sent B2")])
@@ -78,7 +78,7 @@ Given two sentences, are these contradicting each other, entailing one the other
 - **cross-encoder/nli-distilroberta-base** - Accuracy on MNLI mismatched set: 83.98
 
 ```python
-from sentence_transformers import CrossEncoder
+from sentence_transformers_v3 import CrossEncoder
 
 model = CrossEncoder("model_name")
 scores = model.predict([

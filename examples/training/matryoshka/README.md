@@ -28,7 +28,7 @@ These findings are indicative that truncating embeddings by a Matryoshka model c
 Training using Matryoshka Representation Learning (MRL) is quite elementary: rather than applying some loss function on only the full-size embeddings, we also apply that same loss function on truncated portions of the embeddings. For example, if a model has an embedding dimension of 768 by default, it can now be trained on 768, 512, 256, 128, 64 and 32. Each of these losses will be added together, optionally with some weight:
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 from sentence_transformers.losses import CoSENTLoss, MatryoshkaLoss
 
 model = SentenceTransformer("microsoft/mpnet-base")
@@ -41,7 +41,7 @@ loss = MatryoshkaLoss(model=model, loss=base_loss, matryoshka_dims=[768, 512, 25
 Additionally, this can be combined with the `AdaptiveLayerLoss` such that the resulting model can be reduced both in the size of the output dimensions, but also in the number of layers for faster inference. See also the [Adaptive Layers](../adaptive_layer/README.html) for more information on reducing the number of model layers. In Sentence Transformers, the combination of these two losses is called `Matryoshka2dLoss`, and a shorthand is provided for simpler training.
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 from sentence_transformers.losses import CoSENTLoss, Matryoshka2dLoss
 
 model = SentenceTransformer("microsoft/mpnet-base")
@@ -57,7 +57,7 @@ loss = Matryoshka2dLoss(model=model, loss=base_loss, matryoshka_dims=[768, 512, 
 After a model has been trained using a Matryoshka loss, you can then run inference with it using <a href="../../../docs/package_reference/SentenceTransformer.html#sentence_transformers.SentenceTransformer.encode"><code>SentenceTransformers.encode</code></a>. You must then truncate the resulting embeddings, and it is recommended to renormalize the embeddings.
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 from sentence_transformers.util import cos_sim
 import torch.nn.functional as F
 

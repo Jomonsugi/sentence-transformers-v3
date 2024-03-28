@@ -51,7 +51,7 @@ class SoftmaxLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, SentencesDataset, losses
+                from sentence_transformers_v3 import SentenceTransformer, SentencesDataset, losses
                 from sentence_transformers.readers import InputExample
                 from torch.utils.data import DataLoader
 

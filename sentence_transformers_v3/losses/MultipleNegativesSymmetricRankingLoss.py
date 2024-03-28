@@ -40,7 +40,7 @@ class MultipleNegativesSymmetricRankingLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses, InputExample
+                from sentence_transformers_v3 import SentenceTransformer, losses, InputExample
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('distilbert-base-uncased')

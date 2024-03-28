@@ -37,7 +37,7 @@ class CosineSimilarityLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, InputExample, losses
+                from sentence_transformers_v3 import SentenceTransformer, InputExample, losses
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('distilbert-base-nli-mean-tokens')

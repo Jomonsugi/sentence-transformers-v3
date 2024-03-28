@@ -10,8 +10,8 @@ During training, TSDAE encodes damaged sentences into fixed-sized vectors and re
 ## Unsupervised Training with TSDAE
 Training with TSDAE is simple. You just need a set of sentences:
 ```python
-from sentence_transformers import SentenceTransformer, LoggingHandler
-from sentence_transformers import models, util, datasets, evaluation, losses
+from sentence_transformers_v3 import SentenceTransformer, LoggingHandler
+from sentence_transformers_v3 import models, util, datasets, evaluation, losses
 from torch.utils.data import DataLoader
 
 # Define your sentence transformer model using CLS pooling

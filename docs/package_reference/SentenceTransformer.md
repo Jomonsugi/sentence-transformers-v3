@@ -2,7 +2,7 @@
 
 This page documents the properties and methods when you load a SentenceTransformer model:
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("model-name")
 ```

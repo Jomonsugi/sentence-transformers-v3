@@ -45,7 +45,7 @@ class MegaBatchMarginLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, InputExample, losses
+                from sentence_transformers_v3 import SentenceTransformer, InputExample, losses
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('all-MiniLM-L6-v2')

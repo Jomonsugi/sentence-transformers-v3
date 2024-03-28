@@ -5,8 +5,8 @@ import torch
 from torch import nn, Tensor
 from torch.utils.checkpoint import get_device_states, set_device_states
 from typing import Iterable, Dict, Iterator, List, Optional, Tuple
-from sentence_transformers import SentenceTransformer
-from sentence_transformers import util
+from sentence_transformers_v3 import SentenceTransformer
+from sentence_transformers_v3 import util
 import tqdm
 
 
@@ -112,7 +112,7 @@ class CachedMultipleNegativesRankingLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses, InputExample
+                from sentence_transformers_v3 import SentenceTransformer, losses, InputExample
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('distilbert-base-uncased')

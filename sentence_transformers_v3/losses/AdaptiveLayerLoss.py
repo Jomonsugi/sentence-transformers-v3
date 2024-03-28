@@ -4,9 +4,9 @@ import warnings
 from torch import Tensor, nn
 from torch.nn import functional as F
 import torch
-from sentence_transformers import SentenceTransformer
-from sentence_transformers.losses.CachedMultipleNegativesRankingLoss import CachedMultipleNegativesRankingLoss
-from sentence_transformers.models import Transformer
+from sentence_transformers_v3 import SentenceTransformer
+from sentence_transformers_v3.losses.CachedMultipleNegativesRankingLoss import CachedMultipleNegativesRankingLoss
+from sentence_transformers_v3.models import Transformer
 
 
 class TransformerDecorator:
@@ -146,7 +146,7 @@ class AdaptiveLayerLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses, InputExample
+                from sentence_transformers_v3 import SentenceTransformer, losses, InputExample
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('microsoft/mpnet-base')

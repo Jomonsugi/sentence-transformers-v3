@@ -12,7 +12,7 @@ For a list of available models, see [Pretrained Models](https://www.sbert.net/do
 ## Usage
 You can use the models in the following way:
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 embedder = SentenceTransformer("model-name")
 embeddings = embedder.encode(["Hello World", "Hallo Welt", "Hola mundo"])

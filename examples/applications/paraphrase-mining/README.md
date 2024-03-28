@@ -6,7 +6,7 @@ However, as this has a quadratic runtime, it fails to scale to large (10,000 and
 
 For larger collections, *util* offers the *paraphrase_mining* function that can be used like this:
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 

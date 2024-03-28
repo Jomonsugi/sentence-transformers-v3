@@ -1,4 +1,4 @@
-from sentence_transformers import losses, SentenceTransformer, util
+from sentence_transformers_v3 import losses, SentenceTransformer, util
 
 
 class AnglELoss(losses.CoSENTLoss):
@@ -43,7 +43,7 @@ class AnglELoss(losses.CoSENTLoss):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses
+                from sentence_transformers_v3 import SentenceTransformer, losses
                 from sentence_transformers.readers import InputExample
 
                 model = SentenceTransformer('bert-base-uncased')

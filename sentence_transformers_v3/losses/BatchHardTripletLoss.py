@@ -1,8 +1,8 @@
 import torch
 from torch import nn, Tensor
 from typing import Iterable, Dict
-from sentence_transformers import util
-from sentence_transformers.SentenceTransformer import SentenceTransformer
+from sentence_transformers_v3 import util
+from sentence_transformers_v3.SentenceTransformer import SentenceTransformer
 
 
 class BatchHardTripletLossDistanceFunction:
@@ -106,7 +106,7 @@ class BatchHardTripletLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses
+                from sentence_transformers_v3 import SentenceTransformer, losses
                 from sentence_transformers.readers import InputExample
                 from torch.utils.data import DataLoader
 

@@ -1,7 +1,7 @@
 from typing import Any, Dict, List, Optional, Union
 from torch.nn import Module
-from sentence_transformers.SentenceTransformer import SentenceTransformer
-from sentence_transformers.losses import AdaptiveLayerLoss, MatryoshkaLoss
+from sentence_transformers_v3.SentenceTransformer import SentenceTransformer
+from sentence_transformers_v3.losses import AdaptiveLayerLoss, MatryoshkaLoss
 
 
 class Matryoshka2dLoss(AdaptiveLayerLoss):
@@ -73,7 +73,7 @@ class Matryoshka2dLoss(AdaptiveLayerLoss):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses, InputExample
+                from sentence_transformers_v3 import SentenceTransformer, losses, InputExample
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('microsoft/mpnet-base')

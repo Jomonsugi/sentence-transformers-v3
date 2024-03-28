@@ -1,6 +1,6 @@
 from torch import nn, Tensor
 from typing import Iterable, Dict
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 from transformers import AutoConfig, AutoTokenizer, AutoModelForCausalLM, PreTrainedModel
 import logging
 
@@ -45,7 +45,7 @@ class DenoisingAutoEncoderLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses
+                from sentence_transformers_v3 import SentenceTransformer, losses
                 from sentence_transformers.datasets import DenoisingAutoEncoderDataset
                 from torch.utils.data import DataLoader
 

@@ -3,8 +3,8 @@ from typing import Any, Dict, Iterable, List, Optional, Union
 import warnings
 from torch import Tensor, nn
 import torch.nn.functional as F
-from sentence_transformers import SentenceTransformer
-from sentence_transformers.losses.CachedMultipleNegativesRankingLoss import CachedMultipleNegativesRankingLoss
+from sentence_transformers_v3 import SentenceTransformer
+from sentence_transformers_v3.losses.CachedMultipleNegativesRankingLoss import CachedMultipleNegativesRankingLoss
 
 
 class ForwardDecorator:
@@ -83,7 +83,7 @@ class MatryoshkaLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses, InputExample
+                from sentence_transformers_v3 import SentenceTransformer, losses, InputExample
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('microsoft/mpnet-base')

@@ -16,7 +16,7 @@ To encode paragraphs, you need to provide a title (e.g. the Wikipedia article ti
 
 Queries are encoded with **question_encoder**:
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 passage_encoder = SentenceTransformer("facebook-dpr-ctx_encoder-single-nq-base")
 

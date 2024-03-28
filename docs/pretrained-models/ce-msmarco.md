@@ -7,7 +7,7 @@ The training data consists of over 500k examples, while the complete corpus cons
 ## Usage with SentenceTransformers
 Pre-trained models can be used like this:
 ```python
-from sentence_transformers import CrossEncoder
+from sentence_transformers_v3 import CrossEncoder
 
 model = CrossEncoder("model_name", max_length=512)
 scores = model.predict(

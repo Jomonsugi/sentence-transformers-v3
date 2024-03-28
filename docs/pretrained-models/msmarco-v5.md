@@ -5,7 +5,7 @@ The training data constist of over 500k examples, while the complete  corpus con
  
 ## Usage
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 model = SentenceTransformer("msmarco-distilbert-dot-v5")
 

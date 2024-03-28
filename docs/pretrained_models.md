@@ -3,7 +3,7 @@
 We provide various pre-trained models. Using these models is easy:
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("model_name")
 ```
@@ -26,7 +26,7 @@ The **all-*** models were trained on all available training data (more than 1 bi
 The following models have been specifically trained for **Semantic Search**: Given a question / search query, these models are able to find relevant text passages. For more details, see [Usage - Semantic Search](../examples/applications/semantic-search/README.md).
 
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 model = SentenceTransformer("multi-qa-MiniLM-L6-cos-v1")
 
@@ -143,7 +143,7 @@ The following models work out of the box:
 You can use these models like so:
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("hkunlp/instructor-large")
 embeddings = model.encode(
@@ -161,7 +161,7 @@ print(embeddings.shape)
 
 For example, for information retrieval:
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 from sentence_transformers.util import cos_sim
 
 model = SentenceTransformer("hkunlp/instructor-large")
@@ -200,7 +200,7 @@ The following models were trained on [Google's Natural Questions dataset](https:
 - **nq-distilbert-base-v1**: MRR10: 72.36 on NQ dev set (small)
 
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 model = SentenceTransformer("nq-distilbert-base-v1")
 

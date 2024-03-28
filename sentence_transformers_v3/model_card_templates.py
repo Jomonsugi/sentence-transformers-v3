@@ -40,7 +40,7 @@ pip install -U sentence-transformers
 Then you can use the model like this:
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 sentences = ["This is an example sentence", "Each sentence is converted"]
 
 model = SentenceTransformer('{MODEL_NAME}')

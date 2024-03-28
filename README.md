@@ -78,7 +78,7 @@ See [Quickstart](https://www.sbert.net/docs/quickstart.html) in our documenation
 First download a pretrained model.
 
 ````python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 ````

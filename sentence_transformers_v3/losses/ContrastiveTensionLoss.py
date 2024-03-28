@@ -42,7 +42,7 @@ class ContrastiveTensionLoss(nn.Module):
     Example:
         ::
 
-            from sentence_transformers import SentenceTransformer, losses
+            from sentence_transformers_v3 import SentenceTransformer, losses
             from sentence_transformers.losses import ContrastiveTensionDataLoader
 
             model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -121,7 +121,7 @@ class ContrastiveTensionLossInBatchNegatives(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses
+                from sentence_transformers_v3 import SentenceTransformer, losses
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('all-MiniLM-L6-v2')

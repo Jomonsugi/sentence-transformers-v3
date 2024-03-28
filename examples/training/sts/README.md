@@ -12,7 +12,7 @@ In STS, we have sentence pairs annotated together with a score indicating the si
 To store our training data, we create a list with `InputExample` objects. Each `InputExample` contains the sentence pair together with the label (score) that ranges between 0 - 1. A simplified version how the training data has to look like is the following:
 
 ```python
-from sentence_transformers import (
+from sentence_transformers_v3 import (
     SentenceTransformer,
     SentencesDataset,
     InputExample,

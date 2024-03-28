@@ -1,8 +1,8 @@
 from typing import Any, Iterable, Dict
 import torch
 from torch import nn, Tensor
-from sentence_transformers.SentenceTransformer import SentenceTransformer
-from sentence_transformers.models import Transformer
+from sentence_transformers_v3.SentenceTransformer import SentenceTransformer
+from sentence_transformers_v3.models import Transformer
 
 
 class GISTEmbedLoss(nn.Module):
@@ -46,7 +46,7 @@ class GISTEmbedLoss(nn.Module):
         Example:
             ::
 
-                from sentence_transformers import SentenceTransformer, losses, InputExample
+                from sentence_transformers_v3 import SentenceTransformer, losses, InputExample
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('all-MiniLM-L6-v2')

@@ -12,7 +12,7 @@ Ensure that you have [transformers](https://pypi.org/project/transformers/) inst
 SentenceTransformers provides a wrapper for the [OpenAI CLIP Model](https://github.com/openai/CLIP), which was trained on a variety of (image, text)-pairs.
 
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 from PIL import Image
 
 # Load CLIP model

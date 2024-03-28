@@ -369,7 +369,7 @@ class CrossEncoder:
         Example:
             ::
 
-                from sentence_transformers import CrossEncoder
+                from sentence_transformers_v3 import CrossEncoder
                 model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 
                 query = "Who wrote 'To Kill a Mockingbird'?"

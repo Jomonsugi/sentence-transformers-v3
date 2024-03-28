@@ -28,7 +28,7 @@ Training with Adaptive Layer support is quite elementary: rather than applying s
 For example, with the 12-layer [microsoft/mpnet-base](https://huggingface.co/microsoft/mpnet-base), it will now be trained such that the model produces meaningful embeddings after each of the 12 layers.
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 from sentence_transformers.losses import CoSENTLoss, AdaptiveLayerLoss
 
 model = SentenceTransformer("microsoft/mpnet-base")
@@ -43,7 +43,7 @@ Note that training with `AdaptiveLayerLoss` is not notably slower than without u
 Additionally, this can be combined with the `MatryoshkaLoss` such that the resulting model can be reduced both in the number of layers, but also in the size of the output dimensions. See also the [Matryoshka Embeddings](../matryoshka/README.html) for more information on reducing output dimensions. In Sentence Transformers, the combination of these two losses is called `Matryoshka2dLoss`, and a shorthand is provided for simpler training.
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 from sentence_transformers.losses import CoSENTLoss, Matryoshka2dLoss
 
 model = SentenceTransformer("microsoft/mpnet-base")
@@ -61,7 +61,7 @@ After a model has been trained using the Adaptive Layer loss, you can then trunc
 First of all, we will load the model & access the underlying `transformers` model like so:
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("tomaarsen/mpnet-base-nli-adaptive-layer")
 
@@ -119,7 +119,7 @@ model[0].auto_model.encoder.layer = model[0].auto_model.encoder.layer[:new_num_l
 Then we can run inference with it using <a href="../../../docs/package_reference/SentenceTransformer.html#sentence_transformers.SentenceTransformer.encode"><code>SentenceTransformers.encode</code></a>. 
 
 ```python
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 from sentence_transformers.util import cos_sim
 
 model = SentenceTransformer("tomaarsen/mpnet-base-nli-adaptive-layer")

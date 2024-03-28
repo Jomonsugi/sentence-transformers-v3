@@ -13,7 +13,7 @@ Version 1 models were trained on the training set of MS Marco Passage retrieval 
 
 They can be used like this:
 ```python
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 model = SentenceTransformer("distilroberta-base-msmarco-v1")
 

@@ -17,7 +17,7 @@ All models on the Hugging Face Hub come with the following:
 Any pre-trained models from the Hub can be loaded with a single line of code:
 
 ```py
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 model = SentenceTransformer("model_name")
 ```
@@ -32,7 +32,7 @@ You can even click `Use in sentence-transformers` to get a code snippet that you
 Here is an example that loads the [multi-qa-MiniLM-L6-cos-v1 model](https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1) and uses it to encode sentences and then compute the distance between them for doing semantic search.
 
 ```py
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 model = SentenceTransformer("multi-qa-MiniLM-L6-cos-v1")
 
@@ -48,7 +48,7 @@ print("Similarity:", util.dot_score(query_embedding, passage_embedding))
 Here is another example, this time using the [clips/mfaq model](https://huggingface.co/clips/mfaq) for multilingual FAQ retrieval. After embedding the query and the answers, we perform a semantic search to find the most relevant answer. 
 
 ```py
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers_v3 import SentenceTransformer, util
 
 question = "<Q>How many models can I host on HuggingFace?"
 answer_1 = "<A>All plans come with unlimited private models and datasets."
@@ -74,7 +74,7 @@ huggingface-cli login
 Then, you can share your SentenceTransformers models by calling the [`push_to_hub` method](https://www.sbert.net/docs/package_reference/SentenceTransformer.html#sentence_transformers.SentenceTransformer.push_to_hub) from a trained model. By default, the model will be uploaded to your account, but you can upload to an [organization](https://huggingface.co/docs/hub/organizations) by providing the organization as a part of the `repo_id`, e.g. `model.push_to_hub("my_organization/my_model_name")`. `push_to_hub` automatically generates a model card, an inference widget, example code snippets, and more.
 
 ```py
-from sentence_transformers import SentenceTransformer
+from sentence_transformers_v3 import SentenceTransformer
 
 # Load or train a model
 model.push_to_hub("my_new_model")

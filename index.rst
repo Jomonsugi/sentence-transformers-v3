@@ -28,7 +28,7 @@ The usage is as simple as:
 
 .. code-block:: python
 
-    from sentence_transformers import SentenceTransformer
+    from sentence_transformers_v3 import SentenceTransformer
     model = SentenceTransformer("all-MiniLM-L6-v2")
 
     # Our sentences to encode

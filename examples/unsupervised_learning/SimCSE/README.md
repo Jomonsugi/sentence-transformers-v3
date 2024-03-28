@@ -9,8 +9,8 @@ The idea is to encode the same sentence twice. Due to the used dropout in transf
 SentenceTransformers implements the [MultipleNegativesRankingLoss](https://www.sbert.net/docs/package_reference/losses.html#multiplenegativesrankingloss), which makes training with SimCSE trivial:
 
 ```python
-from sentence_transformers import SentenceTransformer, InputExample
-from sentence_transformers import models, losses
+from sentence_transformers_v3 import SentenceTransformer, InputExample
+from sentence_transformers_v3 import models, losses
 from torch.utils.data import DataLoader
 
 # Define your sentence transformer model using CLS pooling
