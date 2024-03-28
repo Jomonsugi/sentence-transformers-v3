@@ -107,7 +107,7 @@ class BatchHardTripletLoss(nn.Module):
             ::
 
                 from sentence_transformers_v3 import SentenceTransformer, losses
-                from sentence_transformers.readers import InputExample
+                from sentence_transformers_v3.readers import InputExample
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('distilbert-base-nli-mean-tokens')

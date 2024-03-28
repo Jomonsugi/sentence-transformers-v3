@@ -22,7 +22,7 @@ As a result, in practice quantizing a `float32` embedding with a dimensionality 
 
 ```python
 from sentence_transformers_v3 import SentenceTransformer
-from sentence_transformers.quantization import quantize_embeddings
+from sentence_transformers_v3.quantization import quantize_embeddings
 
 # 1. Load an embedding model
 model = SentenceTransformer("mixedbread-ai/mxbai-embed-large-v1")
@@ -86,7 +86,7 @@ See how you can produce scalar quantized embeddings using Sentence Transformers 
 
 ```python
 from sentence_transformers_v3 import SentenceTransformer
-from sentence_transformers.quantization import quantize_embeddings
+from sentence_transformers_v3.quantization import quantize_embeddings
 from datasets import load_dataset
 
 # 1. Load an embedding model

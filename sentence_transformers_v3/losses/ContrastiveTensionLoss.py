@@ -43,7 +43,7 @@ class ContrastiveTensionLoss(nn.Module):
         ::
 
             from sentence_transformers_v3 import SentenceTransformer, losses
-            from sentence_transformers.losses import ContrastiveTensionDataLoader
+            from sentence_transformers_v3.losses import ContrastiveTensionDataLoader
 
             model = SentenceTransformer('all-MiniLM-L6-v2')
             train_examples = [

@@ -31,7 +31,7 @@ Bi-Encoders (see [Computing Sentence Embeddings](../computing-embeddings/README.
 ## Cross-Encoders Usage
 Using Cross-Encoders is quite easy:
 ```python
-from sentence_transformers.cross_encoder import CrossEncoder
+from sentence_transformers_v3.cross_encoder import CrossEncoder
 
 model = CrossEncoder("model_name_or_path")
 scores = model.predict([["My first", "sentence pair"], ["Second text", "pair"]])

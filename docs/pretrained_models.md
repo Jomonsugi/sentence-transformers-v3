@@ -162,7 +162,7 @@ print(embeddings.shape)
 For example, for information retrieval:
 ```python
 from sentence_transformers_v3 import SentenceTransformer
-from sentence_transformers.util import cos_sim
+from sentence_transformers_v3.util import cos_sim
 
 model = SentenceTransformer("hkunlp/instructor-large")
 query = "where is the food stored in a yam plant"

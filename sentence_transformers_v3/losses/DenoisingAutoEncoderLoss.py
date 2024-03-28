@@ -46,7 +46,7 @@ class DenoisingAutoEncoderLoss(nn.Module):
             ::
 
                 from sentence_transformers_v3 import SentenceTransformer, losses
-                from sentence_transformers.datasets import DenoisingAutoEncoderDataset
+                from sentence_transformers_v3.datasets import DenoisingAutoEncoderDataset
                 from torch.utils.data import DataLoader
 
                 model_name = "bert-base-cased"

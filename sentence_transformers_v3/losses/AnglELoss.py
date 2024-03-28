@@ -44,7 +44,7 @@ class AnglELoss(losses.CoSENTLoss):
             ::
 
                 from sentence_transformers_v3 import SentenceTransformer, losses
-                from sentence_transformers.readers import InputExample
+                from sentence_transformers_v3.readers import InputExample
 
                 model = SentenceTransformer('bert-base-uncased')
                 train_examples = [InputExample(texts=['My first sentence', 'My second sentence'], label=1.0),

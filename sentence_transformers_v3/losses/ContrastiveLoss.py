@@ -54,7 +54,7 @@ class ContrastiveLoss(nn.Module):
             ::
 
                 from sentence_transformers_v3 import SentenceTransformer, losses
-                from sentence_transformers.readers import InputExample
+                from sentence_transformers_v3.readers import InputExample
                 from torch.utils.data import DataLoader
 
                 model = SentenceTransformer('all-MiniLM-L6-v2')

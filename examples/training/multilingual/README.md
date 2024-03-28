@@ -138,7 +138,7 @@ The order of the translations are not important, it is only important that the f
 
 You can load such a training file using the *ParallelSentencesDataset* class:
 ```python
-from sentence_transformers.datasets import ParallelSentencesDataset
+from sentence_transformers_v3.datasets import ParallelSentencesDataset
 
 train_data = ParallelSentencesDataset(student_model=student_model, teacher_model=teacher_model)
 train_data.load_data("path/to/tab/separated/train-en-de.tsv")

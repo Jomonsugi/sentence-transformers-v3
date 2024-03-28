@@ -41,7 +41,7 @@ class MarginMSELoss(nn.Module):
             ::
 
                 from sentence_transformers_v3 import SentenceTransformer, InputExample, losses
-                from sentence_transformers.util import pairwise_dot_score
+                from sentence_transformers_v3.util import pairwise_dot_score
                 from torch.utils.data import DataLoader
                 import torch
 
